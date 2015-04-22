@@ -3,9 +3,11 @@ package org.spiritualfitness;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-
 import android.view.MenuItem;
 
+import org.spiritualfitness.CourseActivityDetailFragment;
+import org.spiritualfitness.CourseActivityListActivity;
+import org.spiritualfitness.R;
 
 /**
  * An activity representing a single CourseActivity detail screen. This

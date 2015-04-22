@@ -1,0 +1,6 @@
+# To run the Emulator from the command link:
+
+ln -s -i -v /etc/emulator64-x86 /etc/emulator
+
+export LD_LIBRARY_PATH=/Users/jwstebb/projects/android/adtBundleMac/sdk/tools/lib
+/Users/jwstebb/projects/android/adtBundleMac/sdk/tools/emulator -avd JesseNexus50 -netspeed full -netdelay none
