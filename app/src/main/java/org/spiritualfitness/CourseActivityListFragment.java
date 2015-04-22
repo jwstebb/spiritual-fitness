@@ -116,6 +116,7 @@ public class CourseActivityListFragment extends ListFragment {
                 : ListView.CHOICE_MODE_NONE);
     }
 
+    // Called by AsyncTask
     private void setCourseActivitiesData(List<CourseActivity> courseActivities) {
         RecentCourseActivitiesAdapter courseActivitiesAdapter = new RecentCourseActivitiesAdapter(getActivity(), courseActivities);
         setListAdapter(courseActivitiesAdapter);
