@@ -11,10 +11,14 @@ public class CourseService {
     private static final List<CourseActivity> courseActivities = new ArrayList<>();
 
     static {
-        CourseLesson lesson1 = new CourseLesson("1", "Course Lesson 1");
-        CourseLesson lesson2 = new CourseLesson("2", "Course Lesson 2");
-        CourseLesson lesson3 = new CourseLesson("3", "Course Lesson 3");
-        CourseLesson lesson4 = new CourseLesson("4", "Course Lesson 4");
+        CourseLesson lesson1 = new CourseLesson("1", "Course Lesson 1 Description",
+                "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4");
+        CourseLesson lesson2 = new CourseLesson("2", "Course Lesson 2 Description",
+                "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4");
+        CourseLesson lesson3 = new CourseLesson("3", "Course Lesson 3 Description",
+                "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4");
+        CourseLesson lesson4 = new CourseLesson("4", "Course Lesson 4 Description",
+                "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4");
 
         CoursePost post1 = new CoursePost("5", "Course Post 1");
         CoursePost post2 = new CoursePost("6", "Course Post 2");

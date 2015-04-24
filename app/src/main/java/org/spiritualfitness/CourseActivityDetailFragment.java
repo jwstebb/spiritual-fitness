@@ -1,11 +1,14 @@
 package org.spiritualfitness;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import org.spiritualfitness.course.domain.CourseActivity;
 import org.spiritualfitness.course.domain.CourseActivityType;
@@ -57,7 +60,19 @@ public class CourseActivityDetailFragment extends Fragment {
 
     private View createCourseLessonView(CourseLesson courseLesson, LayoutInflater inflater, ViewGroup container) {
         View rootView = inflater.inflate(R.layout.fragment_courselesson_detail, container, false);
-        ((TextView) rootView.findViewById(R.id.lesson_id)).setText(courseLesson.getId());
+        ((TextView) rootView.findViewById(R.id.lesson_description)).setText(courseLesson.getDescription());
+
+        VideoView videoView = (VideoView) rootView.findViewById(R.id.lesson_video);
+        Uri videoUri = Uri.parse(courseLesson.getVideoUrl());
+
+        videoView.setVideoURI(videoUri);
+
+        MediaController videoControl = new MediaController(inflater.getContext());
+        videoControl.setMediaPlayer(videoView);
+        videoView.setMediaController(videoControl);
+
+        videoView.requestFocus();
+        videoView.start();
 
         return rootView;
     }
