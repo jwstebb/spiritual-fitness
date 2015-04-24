@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.spiritualfitness.course.domain.CourseActivity;
+import org.spiritualfitness.course.domain.CourseActivityType;
+import org.spiritualfitness.course.domain.CourseLesson;
+import org.spiritualfitness.course.domain.CoursePost;
 import org.spiritualfitness.course.service.CourseService;
 import org.spiritualfitness.shared.service.Services;
 
@@ -25,7 +28,6 @@ public class CourseActivityDetailFragment extends Fragment {
     public static final String ARG_ITEM_ID = "item_id";
 
     private CourseService courseService;
-    private CourseActivity courseActivity;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -38,16 +40,31 @@ public class CourseActivityDetailFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        String activityId = getArguments().getString(ARG_ITEM_ID);
-        courseActivity = courseService.getCourseActivity(activityId);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_courseactivity_detail, container, false);
-        ((TextView) rootView.findViewById(R.id.courseactivity_detail)).setText(courseActivity.getId());
+        String activityId = getArguments().getString(ARG_ITEM_ID);
+        CourseActivity courseActivity = courseService.getCourseActivity(activityId);
+
+        if (courseActivity.getType() == CourseActivityType.LESSON) {
+            return createCourseLessonView((CourseLesson) courseActivity, inflater, container);
+        } else {
+            return createCoursePostView((CoursePost) courseActivity, inflater, container);
+        }
+    }
+
+    private View createCourseLessonView(CourseLesson courseLesson, LayoutInflater inflater, ViewGroup container) {
+        View rootView = inflater.inflate(R.layout.fragment_courselesson_detail, container, false);
+        ((TextView) rootView.findViewById(R.id.lesson_id)).setText(courseLesson.getId());
+
+        return rootView;
+    }
+
+    private View createCoursePostView(CoursePost coursePost, LayoutInflater inflater, ViewGroup container) {
+        View rootView = inflater.inflate(R.layout.fragment_coursepost_detail, container, false);
+        ((TextView) rootView.findViewById(R.id.post_id)).setText(coursePost.getId());
 
         return rootView;
     }
